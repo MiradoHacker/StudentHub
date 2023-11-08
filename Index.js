@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyparser = require('body-parser')
-
+const cors = require('cors');
 const AuthRoute = require('./Route/UserRoute')
 const InscriptionRoute = require('./Route/InscriptionRoute')
 const grades = require('./Controller/AddClass')
@@ -18,7 +18,7 @@ db.once('open', ()=>{
 
 const app = express()
 PORT = 8000;
-
+app.use(cors())
 grades();
 app.listen(PORT, function(){
     console.log('listening on port', PORT)
